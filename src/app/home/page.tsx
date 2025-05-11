@@ -5,12 +5,13 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { wordPairs } from "../data/wordPairs";
+import { Suspense } from "react";
 
 // Create separate arrays for English and French words
 const englishWords = wordPairs.map((pair) => pair.english);
 const frenchWords = wordPairs.map((pair) => pair.french);
 
-export default function Page() {
+function Content() {
   const searchParams = useSearchParams();
   const correct = searchParams.get("correct");
   const total = searchParams.get("total");
@@ -82,5 +83,13 @@ export default function Page() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading home page...</div>}>
+      <Content />
+    </Suspense>
   );
 }
