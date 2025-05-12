@@ -23,6 +23,17 @@ A fun and interactive word matching game built with Next.js and React, where pla
 - [Tailwind CSS](https://tailwindcss.com/) - Styling
 - [Jest](https://jestjs.io/) - Testing framework
 
+## CI/CD
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+- Automated testing on Node.js 18.x and 20.x
+- Linting checks
+- Build verification
+- Automated deployment to Vercel (on main branch)
+
+Status: ![CI Status](https://github.com/<your-username>/cascade-debt/actions/workflows/ci.yml/badge.svg)
+
 ## Getting Started
 
 ### Prerequisites
