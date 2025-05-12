@@ -7,6 +7,8 @@ import {
   useEdgesState,
   useReactFlow,
   MarkerType,
+  OnNodesChange,
+  OnEdgesChange,
 } from "@xyflow/react";
 import { wordPairs } from "../data/wordPairs";
 
@@ -28,7 +30,71 @@ const generateNodes = () => {
   return [...englishNodes, ...shuffledFrench];
 };
 
-export const useGameLogic = () => {
+/**
+ * A custom hook that provides the logic for a word matching game using React Flow.
+ * It manages the state of nodes and edges, handles user interactions for connecting
+ * English words to their French translations, and provides functions to grade the
+ * connections and reset the game.
+ *
+ * The game displays English words on the left and shuffled French words on the right.
+ * Users create connections between nodes by clicking an English word to start a
+ * connection and a French word to complete it. The hook supports real-time feedback
+ * with temporary edges during connection attempts, grading of correct matches, and
+ * navigation to a results page.
+ *
+ * @returns {Object} An object containing the game state and handler functions:
+ *
+ * @property {Node[]} nodes - The array of nodes for the React Flow graph, representing
+ * English and French words.
+ *
+ * @property {Edge[]} edges - The array of edges for the React Flow graph, representing
+ * user-made connections between English and French words.
+ *
+ * @property {function} onNodesChange - A handler for node state changes, to be passed
+ * to the `onNodesChange` prop of the React Flow component.
+ *
+ * @property {function} onEdgesChange - A handler for edge state changes, to be passed
+ * to the `onEdgesChange` prop of the React Flow component.
+ *
+ * @property {function} onNodeClick - A handler for node click events, to be passed to
+ * the `onNodeClick` prop of the React Flow component. Starts a connection on English
+ * node clicks and completes it on French node clicks.
+ * @param {React.MouseEvent} event - The mouse event triggered by the click.
+ * @param {Node} node - The clicked node.
+ *
+ * @property {function} onPaneClick - A handler for pane click events, to be passed to
+ * the `onPaneClick` prop of the React Flow component. Cancels the current connection
+ * attempt if one is active.
+ *
+ * @property {function} handleGrade - A function to evaluate the user's connections,
+ * calculate the number of correct matches, and navigate to a results page after a
+ * short delay.
+ *
+ * @property {function} resetGame - A function to reset the game state, clearing all
+ * connections, regenerating nodes, and resetting the graded status.
+ *
+ * @property {boolean} isGraded - A boolean indicating whether the game has been graded.
+ *
+ * @property {number} correctConnections - The number of correct connections made by
+ * the user, derived from the edges.
+ *
+ * @property {number} total - The total number of word pairs in the game, based on the
+ * `wordPairs` data.
+ */
+
+export const useGameLogic = (): {
+  nodes: Node[];
+  edges: Edge[];
+  onNodesChange: OnNodesChange<Node>;
+  onEdgesChange: OnEdgesChange<Edge>;
+  onNodeClick: (event: React.MouseEvent, node: Node) => void;
+  onPaneClick: () => void;
+  handleGrade: () => void;
+  resetGame: () => void;
+  isGraded: boolean;
+  correctConnections: number;
+  total: number;
+} => {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>(generateNodes());
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [connectionStarted, setConnectionStarted] = useState(false);

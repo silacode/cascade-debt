@@ -24,9 +24,9 @@ function Content() {
             Word Matching Game
           </h1>
           <div className="flex justify-center mb-6 gap-4">
-            <Button className="bg-green-600 hover:bg-green-700">
-              <Link href="/game"> GO!</Link>
-            </Button>
+            <Link href="/game">
+              <Button className="bg-green-600 hover:bg-green-700">GO!</Button>
+            </Link>
           </div>
 
           {correct && total && (

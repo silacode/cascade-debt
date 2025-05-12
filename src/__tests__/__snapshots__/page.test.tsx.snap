@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <main
+    class="w-full h-screen bg-white"
+  >
+    <div
+      class="w-full h-full flex flex-col justify-center items-center text-center gap-6 px-4"
+    >
+      <h1
+        class="text-4xl md:text-5xl font-bold text-gray-800"
+      >
+        Word Matching Game
+      </h1>
+      <p
+        class="text-lg md:text-xl text-gray-600 max-w-md"
+      >
+        You can click on an English word and click on a French word to connect it using an arrow.
+      </p>
+      <a
+        href="/home"
+      >
+        <button
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 has-[>svg]:px-3 bg-green-500 hover:bg-green-600 text-white text-lg py-3 px-6 rounded-lg"
+          data-slot="button"
+        >
+          Start
+        </button>
+      </a>
+    </div>
+  </main>
+</div>
+`;

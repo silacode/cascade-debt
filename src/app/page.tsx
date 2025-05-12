@@ -12,9 +12,11 @@ export default function Home() {
           You can click on an English word and click on a French word to connect
           it using an arrow.
         </p>
-        <Button className="bg-green-500 hover:bg-green-600 text-white text-lg py-3 px-6 rounded-lg">
-          <Link href="/home">Start</Link>
-        </Button>
+        <Link href="/home">
+          <Button className="bg-green-500 hover:bg-green-600 text-white text-lg py-3 px-6 rounded-lg">
+            Start
+          </Button>
+        </Link>
       </div>
     </main>
   );
