@@ -1,5 +1,7 @@
 # Word Matching Game
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A fun and interactive word matching game built with Next.js and React, where players can connect English words with their French translations using arrows.
 
 🎮 [Play the Game](https://cascade-debt-ierv.vercel.app/)
